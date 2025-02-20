@@ -30,7 +30,3 @@ Este script utiliza únicamente librerías estándar de Python, por lo que no es
 - Asegúrate de realizar una copia de seguridad del archivo antes de encriptarlo.
 - Este método de encriptación no es seguro para proteger información sensible, ya que es fácilmente reversible.
 
-## Autor
-
-Desarrollado por [Tu Nombre]
-
