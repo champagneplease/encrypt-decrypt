@@ -1,9 +1,16 @@
+import string
+import random
+
+CHARACTERS = string.ascii_letters + string.digits + string.punctuation
+
 
 def encriptar(texto):
 
     textoFinal = ''
     for i in texto:
-        textoFinal += i + "x"
+
+        textoFinal += i + random.choice(CHARACTERS)
+
     return textoFinal
 
 
@@ -20,31 +27,30 @@ def desencriptar(texto):
 
 def encriptarArchivo(rutaFile):
 
-    archivo = open(f"{rutaFile}", "r")
-    texto = archivo.read()
-    archivo.close()
-    textoEncriptado = encriptar(texto)
+    with open(rutaFile, "r") as archivo:
+        texto = archivo.read()
+        textoEncriptado = encriptar(texto)
 
-    archivo = open("texto.txt", "w")
-    archivo.write(textoEncriptado)
-    archivo.close()
+    with open(rutaFile, "w") as archivo:
+        archivo.write(textoEncriptado)
+
     print(f"El Archivo {rutaFile} Fue Encriptado Exitosamente! ")
 
 
 def desencriptarArchivo(rutaFile):
 
-    archivo = open(f"{rutaFile}", "r")
-    texto = archivo.read()
-    archivo.close()
-    textoDesencriptado = desencriptar(texto)
+    with open(rutaFile, "r") as archivo:
+        texto = archivo.read()
+        textoDesencriptado = desencriptar(texto)
 
-    archivo = open("texto.txt", "w")
-    archivo.write(textoDesencriptado)
-    archivo.close()
+    with open(rutaFile, "w") as archivo:
+        archivo.write(textoDesencriptado)
+
     print(f"El Archivo {rutaFile} Fue Desencriptado Exitosamente! ")
 
 
-elegir = input("Presione la letra 'E' para Encriptar / 'D' para Desencriptar: ").upper()
+elegir = input(
+    "Presione la letra 'E' para Encriptar / 'D' para Desencriptar: ").upper()
 
 rutaFile = input('Ingrese la ruta del Archivo: ')
 
